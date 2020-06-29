@@ -1,7 +1,7 @@
+import creational.abstractFactory.AbstractProductFactory;
+import creational.abstractFactory.FirstConcreteProductFactory;
+import creational.abstractFactory.ProductFactory;
 import creational.builder.Product;
-import creational.factoryMethod.AbstractProduct;
-import creational.factoryMethod.ProductFactory;
-import creational.factoryMethod.ProductType;
 import creational.prototype.PrototypeCapable;
 import creational.prototype.PrototypeCapableProduct;
 import creational.singleton.EagerSingleton;
@@ -65,9 +65,12 @@ public class Main {
     }
 
     public static void testFactoryMethod() {
-        AbstractProduct product1 = ProductFactory.createProduct(ProductType.First);
-        AbstractProduct product2 = ProductFactory.createProduct(ProductType.Second);
-        AbstractProduct product3 = ProductFactory.createProduct(ProductType.Third);
+        creational.factoryMethod.AbstractProduct product1 =
+                creational.factoryMethod.ProductFactory.createProduct(creational.factoryMethod.ProductType.First);
+        creational.factoryMethod.AbstractProduct product2 =
+                creational.factoryMethod.ProductFactory.createProduct(creational.factoryMethod.ProductType.Second);
+        creational.factoryMethod.AbstractProduct product3 =
+                creational.factoryMethod.ProductFactory.createProduct(creational.factoryMethod.ProductType.Third);
         System.out.println(product1);
         System.out.println(product2);
         System.out.println(product3);
@@ -75,7 +78,13 @@ public class Main {
     }
 
     public static void testAbstractFactory() {
-
+        creational.abstractFactory.AbstractProduct productCreatedWithInnerDecision =
+                creational.abstractFactory.ProductFactory.createProduct();
+        creational.abstractFactory.AbstractProduct productCreatedWithOuterDecision =
+                creational.abstractFactory.ProductFactory.createProduct(new FirstConcreteProductFactory());
+        System.out.println(productCreatedWithInnerDecision);
+        System.out.println(productCreatedWithOuterDecision);
+        System.out.println();
     }
 
     public static void testBuilder() {
