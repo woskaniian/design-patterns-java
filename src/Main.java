@@ -1,3 +1,7 @@
+import creational.builder.Product;
+import creational.factoryMethod.AbstractProduct;
+import creational.factoryMethod.ProductFactory;
+import creational.factoryMethod.ProductType;
 import creational.prototype.PrototypeCapable;
 import creational.prototype.PrototypeCapableProduct;
 import creational.singleton.EagerSingleton;
@@ -15,6 +19,9 @@ public class Main {
         testLazySingleton();
         testEagerSingleton();
         testPrototype();
+        testFactoryMethod();
+        testAbstractFactory();
+        testBuilder();
     }
 
 
@@ -54,6 +61,31 @@ public class Main {
         System.out.println(product);
         System.out.println("Time taken for instantiation: " + (instantiationEndTime - instantiationStartTime));
         System.out.println("Time taken for prototyping: " + (prototypingEndTime - prototypingStartTime));
+        System.out.println();
+    }
+
+    public static void testFactoryMethod() {
+        AbstractProduct product1 = ProductFactory.createProduct(ProductType.First);
+        AbstractProduct product2 = ProductFactory.createProduct(ProductType.Second);
+        AbstractProduct product3 = ProductFactory.createProduct(ProductType.Third);
+        System.out.println(product1);
+        System.out.println(product2);
+        System.out.println(product3);
+        System.out.println();
+    }
+
+    public static void testAbstractFactory() {
+
+    }
+
+    public static void testBuilder() {
+        Product.ProductBuilder builder = new Product.ProductBuilder("ReqField1Value", "ReqField2Value");
+        Product product = builder
+                .optionalField1("OptField1Value")
+                .optionalField3("OptField3Value")
+                .build();
+        System.out.println(product);
+        System.out.println();
     }
 
     public static void testStructurals() {
