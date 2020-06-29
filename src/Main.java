@@ -1,6 +1,3 @@
-import creational.abstractFactory.AbstractProductFactory;
-import creational.abstractFactory.FirstConcreteProductFactory;
-import creational.abstractFactory.ProductFactory;
 import creational.builder.Product;
 import creational.prototype.PrototypeCapable;
 import creational.prototype.PrototypeCapableProduct;
@@ -81,7 +78,7 @@ public class Main {
         creational.abstractFactory.AbstractProduct productCreatedWithInnerDecision =
                 creational.abstractFactory.ProductFactory.createProduct();
         creational.abstractFactory.AbstractProduct productCreatedWithOuterDecision =
-                creational.abstractFactory.ProductFactory.createProduct(new FirstConcreteProductFactory());
+                creational.abstractFactory.ProductFactory.createProduct(new creational.abstractFactory.FirstConcreteProductFactory());
         System.out.println(productCreatedWithInnerDecision);
         System.out.println(productCreatedWithOuterDecision);
         System.out.println();
