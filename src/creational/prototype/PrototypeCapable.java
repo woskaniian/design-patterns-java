@@ -1,4 +1,5 @@
 package creational.prototype;
 
-public interface PrototypeCapable {
+public interface PrototypeCapable extends Cloneable {
+    PrototypeCapable clone() throws CloneNotSupportedException;
 }
