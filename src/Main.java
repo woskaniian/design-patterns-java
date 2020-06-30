@@ -3,6 +3,10 @@ import creational.prototype.PrototypeCapable;
 import creational.prototype.PrototypeCapableProduct;
 import creational.singleton.EagerSingleton;
 import creational.singleton.LazySingleton;
+import structural.facade.Report;
+import structural.facade.ReportFormat;
+import structural.facade.ReportHelperFacade;
+import structural.facade.ReportType;
 import structural.flyweight.AbstractProduct;
 import structural.flyweight.FlyweightProductFactory;
 import structural.flyweight.ProductType;
@@ -103,6 +107,15 @@ public class Main {
     public static void testStructurals() {
         testProxy();
         testFlyweight();
+        testFacade();
+    }
+
+    private static void testFacade() {
+        Report report1 = ReportHelperFacade.generateReport("Title","ContentOfReport", ReportType.First);
+        Report report2 = ReportHelperFacade.generateReport("Title","ContentOfReport", ReportType.Second);
+        ReportHelperFacade.printReport(report1, ReportFormat.HTML);
+        ReportHelperFacade.printReport(report2, ReportFormat.PDF);
+        ReportHelperFacade.printReport(report2, ReportFormat.TXT);
     }
 
     private static void testProxy() {
@@ -122,6 +135,7 @@ public class Main {
         System.out.println(product2);
         System.out.println(product3);
         System.out.println(product4);
+        System.out.println();
     }
 
     public static void testBehaviorals() {
