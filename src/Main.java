@@ -3,6 +3,7 @@ import creational.prototype.PrototypeCapable;
 import creational.prototype.PrototypeCapableProduct;
 import creational.singleton.EagerSingleton;
 import creational.singleton.LazySingleton;
+import structural.bridge.*;
 import structural.composite.Component;
 import structural.composite.Composite;
 import structural.composite.Leaf;
@@ -112,6 +113,16 @@ public class Main {
         testFlyweight();
         testFacade();
         testComposite();
+        testBridge();
+    }
+
+    private static void testBridge() {
+        FileDownloaderAbstraction windowsFileDownloader = new FileDownloaderAbstractionImpl(new WindowsFileDownloadImplementor());
+        FileDownloaderAbstraction linuxFileDownloader = new FileDownloaderAbstractionImpl(new LinuxFileDownloadImplementor());
+        Object windowsDownloadedObject = windowsFileDownloader.download("https://example.com");
+        windowsFileDownloader.store(windowsDownloadedObject);
+        Object linuxDownloadedObject = linuxFileDownloader.download("https://example.com");
+        linuxFileDownloader.store(linuxDownloadedObject);
     }
 
     private static void testComposite() {
@@ -131,6 +142,7 @@ public class Main {
         composite3.addChild(leaf4);
         // Calling method as component
         ((Component) composite1).doSomething();
+        System.out.println();
     }
 
     private static void testFacade() {
