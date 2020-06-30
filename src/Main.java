@@ -3,6 +3,9 @@ import creational.prototype.PrototypeCapable;
 import creational.prototype.PrototypeCapableProduct;
 import creational.singleton.EagerSingleton;
 import creational.singleton.LazySingleton;
+import structural.composite.Component;
+import structural.composite.Composite;
+import structural.composite.Leaf;
 import structural.facade.Report;
 import structural.facade.ReportFormat;
 import structural.facade.ReportHelperFacade;
@@ -108,14 +111,35 @@ public class Main {
         testProxy();
         testFlyweight();
         testFacade();
+        testComposite();
+    }
+
+    private static void testComposite() {
+        // Creating structure
+        Composite composite1 = new Composite("Field1Value0", "Field1Value0", "Field1Value0");
+        Composite composite2 = new Composite("Field1Value1", "Field1Value1", "Field1Value1");
+        Composite composite3 = new Composite("Field1Value2", "Field1Value2", "Field1Value2");
+        composite1.addChild(composite2);
+        composite1.addChild(composite3);
+        Component leaf1 = new Leaf("Field1Value1", "Field2Value1");
+        Component leaf2 = new Leaf("Field1Value2", "Field2Value2");
+        composite2.addChild(leaf1);
+        composite2.addChild(leaf2);
+        Component leaf3 = new Leaf("Field1Value3", "Field2Value3");
+        Component leaf4 = new Leaf("Field1Value4", "Field2Value4");
+        composite3.addChild(leaf3);
+        composite3.addChild(leaf4);
+        // Calling method as component
+        ((Component) composite1).doSomething();
     }
 
     private static void testFacade() {
-        Report report1 = ReportHelperFacade.generateReport("Title","ContentOfReport", ReportType.First);
-        Report report2 = ReportHelperFacade.generateReport("Title","ContentOfReport", ReportType.Second);
+        Report report1 = ReportHelperFacade.generateReport("Title", "ContentOfReport", ReportType.First);
+        Report report2 = ReportHelperFacade.generateReport("Title", "ContentOfReport", ReportType.Second);
         ReportHelperFacade.printReport(report1, ReportFormat.HTML);
         ReportHelperFacade.printReport(report2, ReportFormat.PDF);
         ReportHelperFacade.printReport(report2, ReportFormat.TXT);
+        System.out.println();
     }
 
     private static void testProxy() {
