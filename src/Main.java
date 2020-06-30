@@ -1,26 +1,3 @@
-import creational.builder.Product;
-import creational.prototype.PrototypeCapable;
-import creational.prototype.PrototypeCapableProduct;
-import creational.singleton.EagerSingleton;
-import creational.singleton.LazySingleton;
-import structural.adapter.CompositeServiceAdapter;
-import structural.adapter.InheritedServiceAdapter;
-import structural.adapter.ServiceAdaptee;
-import structural.adapter.ServiceAdapter;
-import structural.bridge.*;
-import structural.composite.Component;
-import structural.composite.Composite;
-import structural.composite.Leaf;
-import structural.facade.Report;
-import structural.facade.ReportFormat;
-import structural.facade.ReportHelperFacade;
-import structural.facade.ReportType;
-import structural.flyweight.AbstractProduct;
-import structural.flyweight.FlyweightProductFactory;
-import structural.flyweight.ProductType;
-import structural.proxy.Subject;
-import structural.proxy.SubjectProxyUsingComposition;
-import structural.proxy.SubjectProxyUsingInheritance;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,7 +7,7 @@ public class Main {
     }
 
     public static void testCreationals() {
-        System.out.println("Testing Creational patterns");
+        System.out.println("Testing creational patterns");
         testLazySingleton();
         testEagerSingleton();
         testPrototype();
@@ -42,8 +19,8 @@ public class Main {
 
     public static void testLazySingleton() {
         System.out.println("Testing lazy singleton");
-        LazySingleton singleton1 = LazySingleton.getInstance();
-        LazySingleton singleton2 = LazySingleton.getInstance();
+        creational.singleton.LazySingleton singleton1 = creational.singleton.LazySingleton.getInstance();
+        creational.singleton.LazySingleton singleton2 = creational.singleton.LazySingleton.getInstance();
         System.out.println(singleton1);
         System.out.println(singleton2);
         System.out.println();
@@ -51,20 +28,21 @@ public class Main {
 
     public static void testEagerSingleton() {
         System.out.println("Testing eager singleton");
-        EagerSingleton singleton1 = EagerSingleton.getInstance();
-        EagerSingleton singleton2 = EagerSingleton.getInstance();
+        creational.singleton.EagerSingleton singleton1 = creational.singleton.EagerSingleton.getInstance();
+        creational.singleton.EagerSingleton singleton2 = creational.singleton.EagerSingleton.getInstance();
         System.out.println(singleton1);
         System.out.println(singleton2);
         System.out.println();
     }
 
     private static void testPrototype() {
+        System.out.println("Testing prototype");
         long instantiationStartTime = System.nanoTime();
-        PrototypeCapable prototype = new PrototypeCapableProduct("Field1Value", "Field2Value", 1, 2);
+        creational.prototype.PrototypeCapable prototype = new creational.prototype.PrototypeCapableProduct("Field1Value", "Field2Value", 1, 2);
         long instantiationEndTime = System.nanoTime();
         long prototypingStartTime = 0;
         long prototypingEndTime = 0;
-        PrototypeCapable product = null;
+        creational.prototype.PrototypeCapable product = null;
         try {
             prototypingStartTime = System.nanoTime();
             product = prototype.clone();
@@ -80,6 +58,7 @@ public class Main {
     }
 
     public static void testFactoryMethod() {
+        System.out.println("Testing factory method");
         creational.factoryMethod.AbstractProduct product1 =
                 creational.factoryMethod.ProductFactory.createProduct(creational.factoryMethod.ProductType.First);
         creational.factoryMethod.AbstractProduct product2 =
@@ -93,6 +72,7 @@ public class Main {
     }
 
     public static void testAbstractFactory() {
+        System.out.println("Testing abstract factory");
         creational.abstractFactory.AbstractProduct productCreatedWithInnerDecision =
                 creational.abstractFactory.ProductFactory.createProduct();
         creational.abstractFactory.AbstractProduct productCreatedWithOuterDecision =
@@ -103,8 +83,9 @@ public class Main {
     }
 
     public static void testBuilder() {
-        Product.ProductBuilder builder = new Product.ProductBuilder("ReqField1Value", "ReqField2Value");
-        Product product = builder
+        System.out.println("Testing builder");
+        creational.builder.Product.ProductBuilder builder = new creational.builder.Product.ProductBuilder("ReqField1Value", "ReqField2Value");
+        creational.builder.Product product = builder
                 .optionalField1("OptField1Value")
                 .optionalField3("OptField3Value")
                 .build();
@@ -113,17 +94,31 @@ public class Main {
     }
 
     public static void testStructurals() {
+        System.out.println("Testing structural patterns");
         testAdapter();
         testBridge();
         testComposite();
+        testDecorator();
         testFacade();
         testFlyweight();
         testProxy();
     }
 
+    private static void testDecorator() {
+        System.out.println("Testing decorator");
+        structural.decorator.Component component = new structural.decorator.ConcreteComponent("data");
+        structural.decorator.Component decoratedComponent = new structural.decorator.ConcreteDecorator(component);
+        System.out.println(component);
+        System.out.println(decoratedComponent);
+        System.out.println(component.getSomeData());
+        System.out.println(decoratedComponent.getSomeData());
+        System.out.println();
+    }
+
     private static void testAdapter() {
-        ServiceAdapter compositeServiceAdapter = new CompositeServiceAdapter(new ServiceAdaptee());
-        ServiceAdapter inheritedServiceAdapter = new InheritedServiceAdapter();
+        System.out.println("Testing adapter");
+        structural.adapter.ServiceAdapter compositeServiceAdapter = new structural.adapter.CompositeServiceAdapter(new structural.adapter.ServiceAdaptee());
+        structural.adapter.ServiceAdapter inheritedServiceAdapter = new structural.adapter.InheritedServiceAdapter();
         System.out.println(compositeServiceAdapter.getSomeInfo());
         System.out.println(compositeServiceAdapter.getSomeInfo2());
         System.out.println(inheritedServiceAdapter.getSomeInfo());
@@ -132,8 +127,9 @@ public class Main {
     }
 
     private static void testBridge() {
-        FileDownloaderAbstraction windowsFileDownloader = new FileDownloaderAbstractionImpl(new WindowsFileDownloadImplementor());
-        FileDownloaderAbstraction linuxFileDownloader = new FileDownloaderAbstractionImpl(new LinuxFileDownloadImplementor());
+        System.out.println("Testing bridge");
+        structural.bridge.FileDownloaderAbstraction windowsFileDownloader = new structural.bridge.FileDownloaderAbstractionImpl(new structural.bridge.WindowsFileDownloadImplementor());
+        structural.bridge.FileDownloaderAbstraction linuxFileDownloader = new structural.bridge.FileDownloaderAbstractionImpl(new structural.bridge.LinuxFileDownloadImplementor());
         Object windowsDownloadedObject = windowsFileDownloader.download("https://example.com");
         windowsFileDownloader.store(windowsDownloadedObject);
         Object linuxDownloadedObject = linuxFileDownloader.download("https://example.com");
@@ -142,47 +138,51 @@ public class Main {
     }
 
     private static void testComposite() {
+        System.out.println("Testing composite");
         // Creating structure
-        Composite composite1 = new Composite("Field1Value0", "Field1Value0", "Field1Value0");
-        Composite composite2 = new Composite("Field1Value1", "Field1Value1", "Field1Value1");
-        Composite composite3 = new Composite("Field1Value2", "Field1Value2", "Field1Value2");
+        structural.composite.Composite composite1 = new structural.composite.Composite("Field1Value0", "Field1Value0", "Field1Value0");
+        structural.composite.Composite composite2 = new structural.composite.Composite("Field1Value1", "Field1Value1", "Field1Value1");
+        structural.composite.Composite composite3 = new structural.composite.Composite("Field1Value2", "Field1Value2", "Field1Value2");
         composite1.addChild(composite2);
         composite1.addChild(composite3);
-        Component leaf1 = new Leaf("Field1Value1", "Field2Value1");
-        Component leaf2 = new Leaf("Field1Value2", "Field2Value2");
+        structural.composite.Component leaf1 = new structural.composite.Leaf("Field1Value1", "Field2Value1");
+        structural.composite.Component leaf2 = new structural.composite.Leaf("Field1Value2", "Field2Value2");
         composite2.addChild(leaf1);
         composite2.addChild(leaf2);
-        Component leaf3 = new Leaf("Field1Value3", "Field2Value3");
-        Component leaf4 = new Leaf("Field1Value4", "Field2Value4");
+        structural.composite.Component leaf3 = new structural.composite.Leaf("Field1Value3", "Field2Value3");
+        structural.composite.Component leaf4 = new structural.composite.Leaf("Field1Value4", "Field2Value4");
         composite3.addChild(leaf3);
         composite3.addChild(leaf4);
         // Calling method as component
-        ((Component) composite1).doSomething();
+        ((structural.composite.Component) composite1).doSomething();
         System.out.println();
     }
 
     private static void testFacade() {
-        Report report1 = ReportHelperFacade.generateReport("Title", "ContentOfReport", ReportType.First);
-        Report report2 = ReportHelperFacade.generateReport("Title", "ContentOfReport", ReportType.Second);
-        ReportHelperFacade.printReport(report1, ReportFormat.HTML);
-        ReportHelperFacade.printReport(report2, ReportFormat.PDF);
-        ReportHelperFacade.printReport(report2, ReportFormat.TXT);
+        System.out.println("Testing facade");
+        structural.facade.Report report1 = structural.facade.ReportHelperFacade.generateReport("Title", "ContentOfReport", structural.facade.ReportType.First);
+        structural.facade.Report report2 = structural.facade.ReportHelperFacade.generateReport("Title", "ContentOfReport", structural.facade.ReportType.Second);
+        structural.facade.ReportHelperFacade.printReport(report1, structural.facade.ReportFormat.HTML);
+        structural.facade.ReportHelperFacade.printReport(report2, structural.facade.ReportFormat.PDF);
+        structural.facade.ReportHelperFacade.printReport(report2, structural.facade.ReportFormat.TXT);
         System.out.println();
     }
 
     private static void testProxy() {
-        Subject subjectProxyUsingComposition = new SubjectProxyUsingComposition();
-        Subject subjectProxyUsingInheritance = new SubjectProxyUsingInheritance();
+        System.out.println("Testing proxy");
+        structural.proxy.Subject subjectProxyUsingComposition = new structural.proxy.SubjectProxyUsingComposition();
+        structural.proxy.Subject subjectProxyUsingInheritance = new structural.proxy.SubjectProxyUsingInheritance();
         subjectProxyUsingComposition.doSomething();
         subjectProxyUsingInheritance.doSomething();
         System.out.println();
     }
 
     private static void testFlyweight() {
-        AbstractProduct product1 = FlyweightProductFactory.getProduct(ProductType.First);
-        AbstractProduct product2 = FlyweightProductFactory.getProduct(ProductType.First);
-        AbstractProduct product3 = FlyweightProductFactory.getProduct(ProductType.Second);
-        AbstractProduct product4 = FlyweightProductFactory.getProduct(ProductType.Second);
+        System.out.println("Testing flyweight");
+        structural.flyweight.AbstractProduct product1 = structural.flyweight.FlyweightProductFactory.getProduct(structural.flyweight.ProductType.First);
+        structural.flyweight.AbstractProduct product2 = structural.flyweight.FlyweightProductFactory.getProduct(structural.flyweight.ProductType.First);
+        structural.flyweight.AbstractProduct product3 = structural.flyweight.FlyweightProductFactory.getProduct(structural.flyweight.ProductType.Second);
+        structural.flyweight.AbstractProduct product4 = structural.flyweight.FlyweightProductFactory.getProduct(structural.flyweight.ProductType.Second);
         System.out.println(product1);
         System.out.println(product2);
         System.out.println(product3);
