@@ -3,6 +3,12 @@ import creational.prototype.PrototypeCapable;
 import creational.prototype.PrototypeCapableProduct;
 import creational.singleton.EagerSingleton;
 import creational.singleton.LazySingleton;
+import structural.flyweight.AbstractProduct;
+import structural.flyweight.FlyweightProductFactory;
+import structural.flyweight.ProductType;
+import structural.proxy.Subject;
+import structural.proxy.SubjectProxyUsingComposition;
+import structural.proxy.SubjectProxyUsingInheritance;
 
 public class Main {
     public static void main(String[] args) {
@@ -95,7 +101,27 @@ public class Main {
     }
 
     public static void testStructurals() {
+        testProxy();
+        testFlyweight();
+    }
 
+    private static void testProxy() {
+        Subject subjectProxyUsingComposition = new SubjectProxyUsingComposition();
+        Subject subjectProxyUsingInheritance = new SubjectProxyUsingInheritance();
+        subjectProxyUsingComposition.doSomething();
+        subjectProxyUsingInheritance.doSomething();
+        System.out.println();
+    }
+
+    private static void testFlyweight() {
+        AbstractProduct product1 = FlyweightProductFactory.getProduct(ProductType.First);
+        AbstractProduct product2 = FlyweightProductFactory.getProduct(ProductType.First);
+        AbstractProduct product3 = FlyweightProductFactory.getProduct(ProductType.Second);
+        AbstractProduct product4 = FlyweightProductFactory.getProduct(ProductType.Second);
+        System.out.println(product1);
+        System.out.println(product2);
+        System.out.println(product3);
+        System.out.println(product4);
     }
 
     public static void testBehaviorals() {
