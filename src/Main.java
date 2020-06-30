@@ -3,6 +3,10 @@ import creational.prototype.PrototypeCapable;
 import creational.prototype.PrototypeCapableProduct;
 import creational.singleton.EagerSingleton;
 import creational.singleton.LazySingleton;
+import structural.adapter.CompositeServiceAdapter;
+import structural.adapter.InheritedServiceAdapter;
+import structural.adapter.ServiceAdaptee;
+import structural.adapter.ServiceAdapter;
 import structural.bridge.*;
 import structural.composite.Component;
 import structural.composite.Composite;
@@ -109,11 +113,22 @@ public class Main {
     }
 
     public static void testStructurals() {
-        testProxy();
-        testFlyweight();
-        testFacade();
-        testComposite();
+        testAdapter();
         testBridge();
+        testComposite();
+        testFacade();
+        testFlyweight();
+        testProxy();
+    }
+
+    private static void testAdapter() {
+        ServiceAdapter compositeServiceAdapter = new CompositeServiceAdapter(new ServiceAdaptee());
+        ServiceAdapter inheritedServiceAdapter = new InheritedServiceAdapter();
+        System.out.println(compositeServiceAdapter.getSomeInfo());
+        System.out.println(compositeServiceAdapter.getSomeInfo2());
+        System.out.println(inheritedServiceAdapter.getSomeInfo());
+        System.out.println(inheritedServiceAdapter.getSomeInfo2());
+        System.out.println();
     }
 
     private static void testBridge() {
@@ -123,6 +138,7 @@ public class Main {
         windowsFileDownloader.store(windowsDownloadedObject);
         Object linuxDownloadedObject = linuxFileDownloader.download("https://example.com");
         linuxFileDownloader.store(linuxDownloadedObject);
+        System.out.println();
     }
 
     private static void testComposite() {
