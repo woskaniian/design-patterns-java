@@ -191,6 +191,43 @@ public class Main {
     }
 
     public static void testBehaviorals() {
+        testChainOfResponsibility();
+    }
 
+    private static void testChainOfResponsibility() {
+        // Setting up chain
+        behavioral.chainOfResponsibility.FrontDeskSupport frontDeskSupportHandler =
+                new behavioral.chainOfResponsibility.FrontDeskSupport();
+        behavioral.chainOfResponsibility.SupervisorSupport supervisorSupportHandler =
+                new behavioral.chainOfResponsibility.SupervisorSupport();
+        behavioral.chainOfResponsibility.ManagerSupport managerSupportHandler =
+                new behavioral.chainOfResponsibility.ManagerSupport();
+        behavioral.chainOfResponsibility.DirectorSupport directorSupportHandler =
+                new behavioral.chainOfResponsibility.DirectorSupport();
+        behavioral.chainOfResponsibility.SupportServiceImpl supportService =
+                new behavioral.chainOfResponsibility.SupportServiceImpl();
+        supportService.setHandler(frontDeskSupportHandler);
+        frontDeskSupportHandler.setNext(supervisorSupportHandler);
+        supervisorSupportHandler.setNext(managerSupportHandler);
+        managerSupportHandler.setNext(directorSupportHandler);
+        // Testing the chain with making requests to handler
+        behavioral.chainOfResponsibility.ServiceRequest request = new behavioral.chainOfResponsibility.ServiceRequest();
+        request.setType(behavioral.chainOfResponsibility.ServiceLevel.LEVEL_ONE);
+        supportService.handleRequest(request);
+        System.out.println(request.getConclusion());
+
+        request = new behavioral.chainOfResponsibility.ServiceRequest();
+        request.setType(behavioral.chainOfResponsibility.ServiceLevel.LEVEL_THREE);
+        supportService.handleRequest(request);
+        System.out.println(request.getConclusion());
+
+        try {
+            request = new behavioral.chainOfResponsibility.ServiceRequest();
+            request.setType(behavioral.chainOfResponsibility.ServiceLevel.INVALID_REQUEST);
+            supportService.handleRequest(request);
+            System.out.println(request.getConclusion());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
