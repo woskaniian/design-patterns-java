@@ -196,6 +196,18 @@ public class Main {
         testIterator();
         testMediator();
         testMemento();
+        testObserver();
+    }
+
+    private static void testObserver() {
+        behavioral.observer.Observer observer1 = new behavioral.observer.ConcreteObserver();
+        behavioral.observer.Observer observer2 = new behavioral.observer.ConcreteObserver();
+        behavioral.observer.Observable observable = new behavioral.observer.ConcreteObservable();
+        observable.subscribe(observer1);
+        observable.subscribe(observer2);
+        ((behavioral.observer.ConcreteObservable) observable).setField1("Field1Value");
+        ((behavioral.observer.ConcreteObservable) observable).setField2("Field2Value");
+        System.out.println();
     }
 
     private static void testMemento() {
