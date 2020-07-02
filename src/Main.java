@@ -195,6 +195,21 @@ public class Main {
         testCommand();
         testIterator();
         testMediator();
+        testMemento();
+    }
+
+    private static void testMemento() {
+        behavioral.memento.Originator originator = new behavioral.memento.Originator("Initial value", 1, false);
+        behavioral.memento.Caretaker caretaker = new behavioral.memento.Caretaker();
+        caretaker.save(originator);
+        System.out.println("Initial state of originator : " + originator.toString());
+        originator.setField1("Changed value");
+        originator.setField2(2);
+        originator.setField3(true);
+        System.out.println("Changed state of originator : " + originator.toString());
+        caretaker.undo(originator);
+        System.out.println("Restored state of originator : " + originator.toString());
+        System.out.println();
     }
 
     private static void testMediator() {
@@ -205,9 +220,9 @@ public class Main {
         mediator.add(colleague1);
         mediator.add(colleague2);
         mediator.add(colleague3);
-        colleague3.send("Hello","Bob");
-        colleague2.send("How are you?","Alice");
-        colleague1.send("Bye","John");
+        colleague3.send("Hello", "Bob");
+        colleague2.send("How are you?", "Alice");
+        colleague1.send("Bye", "John");
         System.out.println();
     }
 
