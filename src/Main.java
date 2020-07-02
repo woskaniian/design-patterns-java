@@ -194,6 +194,21 @@ public class Main {
         testChainOfResponsibility();
         testCommand();
         testIterator();
+        testMediator();
+    }
+
+    private static void testMediator() {
+        behavioral.mediator.Mediator mediator = new behavioral.mediator.ConcreteMediator();
+        behavioral.mediator.Colleague colleague1 = new behavioral.mediator.ConcreteColleague(1, "Bob", mediator);
+        behavioral.mediator.Colleague colleague2 = new behavioral.mediator.ConcreteColleague(2, "John", mediator);
+        behavioral.mediator.Colleague colleague3 = new behavioral.mediator.ConcreteColleague(3, "Alice", mediator);
+        mediator.add(colleague1);
+        mediator.add(colleague2);
+        mediator.add(colleague3);
+        colleague3.send("Hello","Bob");
+        colleague2.send("How are you?","Alice");
+        colleague1.send("Bye","John");
+        System.out.println();
     }
 
     private static void testIterator() {
