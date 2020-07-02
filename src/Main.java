@@ -197,9 +197,22 @@ public class Main {
         testMediator();
         testMemento();
         testObserver();
+        testState();
+    }
+
+    private static void testState() {
+        System.out.println("Testing state");
+        behavioral.state.State state1 = new behavioral.state.FirstConcreteState();
+        behavioral.state.State state2 = new behavioral.state.SecondConcreteState();
+        behavioral.state.Context context = new behavioral.state.Context(state1);
+        context.doSomeStateDependentWork();
+        context.setState(state2);
+        context.doSomeStateDependentWork();
+        System.out.println();
     }
 
     private static void testObserver() {
+        System.out.println("Testing observer");
         behavioral.observer.Observer observer1 = new behavioral.observer.ConcreteObserver();
         behavioral.observer.Observer observer2 = new behavioral.observer.ConcreteObserver();
         behavioral.observer.Observable observable = new behavioral.observer.ConcreteObservable();
@@ -211,6 +224,7 @@ public class Main {
     }
 
     private static void testMemento() {
+        System.out.println("Testing memento");
         behavioral.memento.Originator originator = new behavioral.memento.Originator("Initial value", 1, false);
         behavioral.memento.Caretaker caretaker = new behavioral.memento.Caretaker();
         caretaker.save(originator);
@@ -225,6 +239,7 @@ public class Main {
     }
 
     private static void testMediator() {
+        System.out.println("Testing mediator");
         behavioral.mediator.Mediator mediator = new behavioral.mediator.ConcreteMediator();
         behavioral.mediator.Colleague colleague1 = new behavioral.mediator.ConcreteColleague(1, "Bob", mediator);
         behavioral.mediator.Colleague colleague2 = new behavioral.mediator.ConcreteColleague(2, "John", mediator);
