@@ -192,9 +192,24 @@ public class Main {
 
     public static void testBehaviorals() {
         testChainOfResponsibility();
+        testCommand();
+    }
+
+    private static void testCommand() {
+        System.out.println("Testing command");
+        behavioral.command.FirstReceiver firstReceiver = new behavioral.command.FirstReceiver();
+        behavioral.command.SecondReceiver secondReceiver = new behavioral.command.SecondReceiver();
+        behavioral.command.Command firstCommand = new behavioral.command.FirstCommand(firstReceiver);
+        behavioral.command.Command secondCommand = new behavioral.command.SecondCommand(secondReceiver);
+        behavioral.command.Invoker invoker = new behavioral.command.Invoker();
+        invoker.setCommand(firstCommand);
+        invoker.invoke();
+        invoker.setCommand(secondCommand);
+        invoker.invoke();
     }
 
     private static void testChainOfResponsibility() {
+        System.out.println("Testing chain of responsibility");
         // Setting up chain
         behavioral.chainOfResponsibility.FrontDeskSupport frontDeskSupportHandler =
                 new behavioral.chainOfResponsibility.FrontDeskSupport();
@@ -229,5 +244,6 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        System.out.println();
     }
 }
