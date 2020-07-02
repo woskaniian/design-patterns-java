@@ -193,6 +193,23 @@ public class Main {
     public static void testBehaviorals() {
         testChainOfResponsibility();
         testCommand();
+        testIterator();
+    }
+
+    private static void testIterator() {
+        System.out.println("Testing iterator");
+        behavioral.iterator.Collection<String> collection = new behavioral.iterator.ConcreteCollection<>();
+        collection.add("First");
+        collection.add("Second");
+        collection.add("Third");
+        collection.add("Forth");
+        collection.add("Fifth");
+        System.out.println(collection);
+        behavioral.iterator.Iterator<String> iterator = collection.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        System.out.println();
     }
 
     private static void testCommand() {
@@ -206,6 +223,7 @@ public class Main {
         invoker.invoke();
         invoker.setCommand(secondCommand);
         invoker.invoke();
+        System.out.println();
     }
 
     private static void testChainOfResponsibility() {
