@@ -16,7 +16,6 @@ public class Main {
         testBuilder();
     }
 
-
     public static void testLazySingleton() {
         System.out.println("Testing lazy singleton");
         creational.singleton.LazySingleton singleton1 = creational.singleton.LazySingleton.getInstance();
@@ -200,6 +199,20 @@ public class Main {
         testState();
         testStrategy();
         testTemplateMethod();
+        testVisitor();
+    }
+
+    private static void testVisitor() {
+        System.out.println("Testing visitor");
+        behavioral.visitor.Router router1 = new behavioral.visitor.TpLinkRouter();
+        behavioral.visitor.Router router2 = new behavioral.visitor.MikroTikRouter();
+        behavioral.visitor.Router router3 = new behavioral.visitor.LinkSysRouter();
+        behavioral.visitor.RouterVisitor visitor1 = new behavioral.visitor.WindowsConfigurator();
+        behavioral.visitor.RouterVisitor visitor2 = new behavioral.visitor.MacConfigurator();
+        router1.accept(visitor1);
+        router2.accept(visitor2);
+        router3.accept(visitor1);
+        System.out.println();
     }
 
     private static void testTemplateMethod() {
