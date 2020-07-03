@@ -199,9 +199,20 @@ public class Main {
         testObserver();
         testState();
         testStrategy();
+        testTemplateMethod();
+    }
+
+    private static void testTemplateMethod() {
+        System.out.println("Testing template method");
+        behavioral.templateMethod.Base firstDerived = new behavioral.templateMethod.FirstDerived();
+        behavioral.templateMethod.Base secondDerived = new behavioral.templateMethod.SecondDerived();
+        firstDerived.templateAlgorithm();
+        secondDerived.templateAlgorithm();
+        System.out.println();
     }
 
     private static void testStrategy() {
+        System.out.println("Testing strategy");
         behavioral.strategy.ShoppingCart shoppingCart = new behavioral.strategy.ShoppingCart();
         behavioral.strategy.Item item1 = new behavioral.strategy.Item("aaa", 50);
         behavioral.strategy.Item item2 = new behavioral.strategy.Item("bbb", 60);
@@ -211,6 +222,7 @@ public class Main {
         shoppingCart.addItem(item3);
         shoppingCart.pay(new behavioral.strategy.PayPalStrategy("john@example.com", "Admin@123"));
         shoppingCart.pay(new behavioral.strategy.CreditCardStrategy("8790-9878-3432-1143", "321", "506", "11/11/2022"));
+        System.out.println();
     }
 
     private static void testState() {
