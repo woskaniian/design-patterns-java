@@ -198,6 +198,19 @@ public class Main {
         testMemento();
         testObserver();
         testState();
+        testStrategy();
+    }
+
+    private static void testStrategy() {
+        behavioral.strategy.ShoppingCart shoppingCart = new behavioral.strategy.ShoppingCart();
+        behavioral.strategy.Item item1 = new behavioral.strategy.Item("aaa", 50);
+        behavioral.strategy.Item item2 = new behavioral.strategy.Item("bbb", 60);
+        behavioral.strategy.Item item3 = new behavioral.strategy.Item("bbb", 70);
+        shoppingCart.addItem(item1);
+        shoppingCart.addItem(item2);
+        shoppingCart.addItem(item3);
+        shoppingCart.pay(new behavioral.strategy.PayPalStrategy("john@example.com", "Admin@123"));
+        shoppingCart.pay(new behavioral.strategy.CreditCardStrategy("8790-9878-3432-1143", "321", "506", "11/11/2022"));
     }
 
     private static void testState() {
