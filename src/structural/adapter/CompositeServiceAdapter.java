@@ -1,12 +1,12 @@
 package structural.adapter;
 
 public class CompositeServiceAdapter implements ServiceAdapter {
-    private ServiceAdaptee serviceAdaptee;
+    private ServiceAdaptee serviceAdaptee = new ServiceAdaptee();
 
-    public CompositeServiceAdapter(ServiceAdaptee serviceAdaptee) {
-        this.serviceAdaptee = serviceAdaptee;
+    public CompositeServiceAdapter() {
     }
 
+    @Override
     public String getSomeInfo() {
         return String.valueOf(serviceAdaptee.getInfo());
     }

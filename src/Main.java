@@ -116,7 +116,7 @@ public class Main {
 
     private static void testAdapter() {
         System.out.println("Testing adapter");
-        structural.adapter.ServiceAdapter compositeServiceAdapter = new structural.adapter.CompositeServiceAdapter(new structural.adapter.ServiceAdaptee());
+        structural.adapter.ServiceAdapter compositeServiceAdapter = new structural.adapter.CompositeServiceAdapter();
         structural.adapter.ServiceAdapter inheritedServiceAdapter = new structural.adapter.InheritedServiceAdapter();
         System.out.println(compositeServiceAdapter.getSomeInfo());
         System.out.println(compositeServiceAdapter.getSomeInfo2());

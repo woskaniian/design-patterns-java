@@ -1,6 +1,8 @@
 package structural.adapter;
 
 public class InheritedServiceAdapter extends ServiceAdaptee implements ServiceAdapter {
+
+    @Override
     public String getSomeInfo() {
         return String.valueOf(super.getInfo());
     }
