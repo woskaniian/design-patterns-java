@@ -4,6 +4,7 @@ package creational.abstractFactory.factories;
 import creational.abstractFactory.products.Document;
 import creational.abstractFactory.products.Letter;
 import creational.abstractFactory.products.Report;
+import creational.abstractFactory.products.Resume;
 
 // Modern family of docs
 public class ModernDocumentFactory extends DocumentFactory {
@@ -19,6 +20,6 @@ public class ModernDocumentFactory extends DocumentFactory {
 
     @Override
     public Document createResume() {
-        return new Report("Modern");
+        return new Resume("Modern");
     }
 }

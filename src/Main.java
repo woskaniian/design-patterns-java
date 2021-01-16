@@ -75,12 +75,16 @@ public class Main {
         creational.abstractFactory.factories.DocumentFactory documentFactory;
         creational.abstractFactory.products.Document document;
 
-        documentFactory = new creational.abstractFactory.factories.FancyDocumentFactory();
+        documentFactory = creational.abstractFactory.FactoryProvider.getDocumentFactory("Fancy");
         document = documentFactory.createResume();
         System.out.println(document);
 
-        documentFactory = new creational.abstractFactory.factories.ModernDocumentFactory();
+        documentFactory = creational.abstractFactory.FactoryProvider.getDocumentFactory("Modern");
         document = documentFactory.createLetter();
+        System.out.println(document);
+
+        documentFactory = creational.abstractFactory.FactoryProvider.getDocumentFactory("OldStyle");
+        document = documentFactory.createReport();
         System.out.println(document);
 
         System.out.println();
