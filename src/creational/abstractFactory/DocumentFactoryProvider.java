@@ -2,7 +2,7 @@ package creational.abstractFactory;
 
 import creational.abstractFactory.factories.*;
 
-public class FactoryProvider {
+public class DocumentFactoryProvider {
     public static DocumentFactory getDocumentFactory(String style) {
         switch (style) {
             case "Fancy":
