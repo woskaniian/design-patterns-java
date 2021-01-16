@@ -72,12 +72,17 @@ public class Main {
 
     public static void testAbstractFactory() {
         System.out.println("Testing abstract factory");
-        creational.abstractFactory.AbstractProduct productCreatedWithInnerDecision =
-                creational.abstractFactory.ProductFactory.createProduct();
-        creational.abstractFactory.AbstractProduct productCreatedWithOuterDecision =
-                creational.abstractFactory.ProductFactory.createProduct(new creational.abstractFactory.FirstConcreteProductFactory());
-        System.out.println(productCreatedWithInnerDecision);
-        System.out.println(productCreatedWithOuterDecision);
+        creational.abstractFactory.factories.DocumentFactory documentFactory;
+        creational.abstractFactory.products.Document document;
+
+        documentFactory = new creational.abstractFactory.factories.FancyDocumentFactory();
+        document = documentFactory.createResume();
+        System.out.println(document);
+
+        documentFactory = new creational.abstractFactory.factories.ModernDocumentFactory();
+        document = documentFactory.createLetter();
+        System.out.println(document);
+
         System.out.println();
     }
 
