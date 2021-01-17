@@ -1,4 +1,4 @@
-import creational.abstractFactory.DocumentFactoryProvider;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -76,15 +76,15 @@ public class Main {
         creational.abstractFactory.factories.DocumentFactory documentFactory;
         creational.abstractFactory.products.Document document;
 
-        documentFactory = DocumentFactoryProvider.getDocumentFactory("Fancy");
+        documentFactory = creational.abstractFactory.DocumentFactoryProvider.getDocumentFactory("Fancy");
         document = documentFactory.createResume();
         System.out.println(document);
 
-        documentFactory = DocumentFactoryProvider.getDocumentFactory("Modern");
+        documentFactory = creational.abstractFactory.DocumentFactoryProvider.getDocumentFactory("Modern");
         document = documentFactory.createLetter();
         System.out.println(document);
 
-        documentFactory = DocumentFactoryProvider.getDocumentFactory("OldStyle");
+        documentFactory = creational.abstractFactory.DocumentFactoryProvider.getDocumentFactory("OldStyle");
         document = documentFactory.createReport();
         System.out.println(document);
 
