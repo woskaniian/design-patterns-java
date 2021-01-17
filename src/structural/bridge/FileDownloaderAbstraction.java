@@ -1,7 +1,13 @@
 package structural.bridge;
 
-public interface FileDownloaderAbstraction {
-    Object download(String url);
+public abstract class FileDownloaderAbstraction {
+    protected FileDownloadImplementor fileDownloadImplementor;
 
-    void store(Object object);
+    public FileDownloaderAbstraction(FileDownloadImplementor fileDownloadImplementor) {
+        this.fileDownloadImplementor = fileDownloadImplementor;
+    }
+
+    public abstract Object download(String url);
+
+    public abstract void store(Object object);
 }

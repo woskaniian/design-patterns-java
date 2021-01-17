@@ -1,20 +1,19 @@
 package structural.bridge;
 
-public class FileDownloaderAbstractionImpl implements FileDownloaderAbstraction {
+public class FileDownloaderAbstractionImpl extends FileDownloaderAbstraction {
 
-    private FileDownloadImplementor fileDownloadImplementation;
 
-    public FileDownloaderAbstractionImpl(FileDownloadImplementor fileDownloadImplementation) {
-        this.fileDownloadImplementation = fileDownloadImplementation;
+    public FileDownloaderAbstractionImpl(FileDownloadImplementor fileDownloadImplementor) {
+        super(fileDownloadImplementor);
     }
 
     @Override
     public Object download(String url) {
-        return this.fileDownloadImplementation.download(url);
+        return this.fileDownloadImplementor.download(url);
     }
 
     @Override
     public void store(Object object) {
-        this.fileDownloadImplementation.store(object);
+        this.fileDownloadImplementor.store(object);
     }
 }
