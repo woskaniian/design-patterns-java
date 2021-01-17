@@ -1,16 +1,7 @@
 package behavioral.chainOfResponsibility;
 
 // First handler
-public class FrontDeskSupport implements SupportService {
-    private SupportService next = null;
-
-    public SupportService getNext() {
-        return next;
-    }
-
-    public void setNext(SupportService next) {
-        this.next = next;
-    }
+public class FrontDeskSupport extends SupportService {
 
     @Override
     public void handleRequest(ServiceRequest service) {

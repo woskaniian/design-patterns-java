@@ -1,6 +1,6 @@
 package behavioral.chainOfResponsibility;
 
-public class SupportServiceImpl implements SupportService {
+public class SupportServiceImpl extends SupportService {
 
     private SupportService handler = null;
 

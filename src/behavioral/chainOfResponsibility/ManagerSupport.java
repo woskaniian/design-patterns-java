@@ -1,16 +1,6 @@
 package behavioral.chainOfResponsibility;
 
-public class ManagerSupport implements SupportService {
-
-    private SupportService next = null;
-
-    public SupportService getNext() {
-        return next;
-    }
-
-    public void setNext(SupportService next) {
-        this.next = next;
-    }
+public class ManagerSupport extends SupportService {
 
     @Override
     public void handleRequest(ServiceRequest request) {
