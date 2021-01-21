@@ -37,7 +37,7 @@ public class ConcreteCollection<E> implements Collection<E> {
 
         @Override
         public boolean hasNext() {
-            return cursor != elements.size();
+            return cursor < elements.size();
         }
     }
 }

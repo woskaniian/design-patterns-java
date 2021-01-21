@@ -40,6 +40,8 @@ public class ConcreteObservable implements Observable {
 
     public void setField3(String field3) {
         this.field3 = field3;
+        this.changed = true;
+        this.notifyObservers(this.toString());
     }
 
     public synchronized void subscribe(Observer observer) {
