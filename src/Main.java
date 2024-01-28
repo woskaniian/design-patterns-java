@@ -50,8 +50,12 @@ public class Main {
         }
         System.out.println(prototype);
         System.out.println(product);
-        System.out.println("Time taken for instantiation: " + (instantiationEndTime - instantiationStartTime));
-        System.out.println("Time taken for prototyping: " + (prototypingEndTime - prototypingStartTime));
+        long prototypingDuration = prototypingEndTime - prototypingStartTime;
+        long instantiationDuration = instantiationEndTime - instantiationStartTime;
+        long difference = instantiationDuration / prototypingDuration;
+        System.out.println("Time taken for instantiation: " + (instantiationDuration));
+        System.out.println("Time taken for prototyping: " + (prototypingDuration));
+        System.out.printf("Prototyping is %dx faster than instantiation.%n", difference);
         System.out.println();
     }
 
@@ -274,13 +278,13 @@ public class Main {
         behavioral.memento.Originator originator = new behavioral.memento.Originator("Initial value", 1, false);
         behavioral.memento.Caretaker caretaker = new behavioral.memento.Caretaker();
         caretaker.save(originator);
-        System.out.println("Initial state of originator : " + originator.toString());
+        System.out.println("Initial state of originator : " + originator);
         originator.setField1("Changed value");
         originator.setField2(2);
         originator.setField3(true);
-        System.out.println("Changed state of originator : " + originator.toString());
+        System.out.println("Changed state of originator : " + originator);
         caretaker.undo(originator);
-        System.out.println("Restored state of originator : " + originator.toString());
+        System.out.println("Restored state of originator : " + originator);
         System.out.println();
     }
 
