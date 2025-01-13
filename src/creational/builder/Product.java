@@ -12,7 +12,7 @@ public class Product {
         this.requiredField2 = requiredField2;
     }
 
-    public Product(ProductBuilder builder) {
+    private Product(ProductBuilder builder) {
         this.requiredField1 = builder.requiredField1;
         this.requiredField2 = builder.requiredField2;
         this.optionalField1 = builder.optionalField1;
