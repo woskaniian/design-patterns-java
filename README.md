@@ -1,63 +1,92 @@
-A Java implementation of classic design patterns, organized by creational, structural, and behavioral categories.
+# Java Design Patterns
 
-## Features
+A collection of **classic design pattern implementations in Java**, organized by **creational**, **structural**, and **behavioral** categories.  
+This project serves as a reference and learning resource, with clean, well-structured examples and demonstrations.  
 
-- **Creational Patterns**: Singleton (lazy & eager), Prototype, Factory Method, Abstract Factory, Builder
-- **Structural Patterns**: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy
-- **Behavioral Patterns**: Strategy, Observer, Command, Chain of Responsibility, Template Method, State, Iterator, Mediator, Memento, Interpreter, Visitor (to be implemented or described)
+---
 
-## Project Structure and File Descriptions
+## ✨ Features
 
-- **src/Main.java**  
-  The main entry point. Contains test methods for each design pattern category and demonstrates their usage and output.
+- **Creational Patterns**  
+  Singleton (lazy & eager), Prototype, Factory Method, Abstract Factory, Builder  
+- **Structural Patterns**  
+  Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy  
+- **Behavioral Patterns**  
+  Strategy, Observer, Command, Chain of Responsibility, Template Method, State, Iterator, Mediator, Memento, Interpreter, Visitor  
 
-- **src/creational/**  
-  Contains all creational pattern implementations:
-  - **singleton/**: Implements both lazy and eager singleton patterns.
-  - **prototype/**: Implements the prototype pattern with cloning and performance comparison.
-  - **factoryMethod/**: Implements the factory method pattern for product creation.
-  - **abstractFactory/**: Implements the abstract factory pattern for creating families of related documents (e.g., Letter, Report, Resume) with different styles (Fancy, Modern, OldStyle).
-    - **factories/**: Contains concrete factory classes for each document style.
-    - **products/**: Contains document product classes (Letter, Report, Resume, etc.).
-    - **DocumentFactoryProvider.java**: Provides the correct factory based on style.
-  - **builder/**: Implements the builder pattern for constructing complex products.
+---
 
-- **src/structural/**  
-  Contains all structural pattern implementations:
-  - **adapter/**: Implements the adapter pattern.
-  - **bridge/**: Implements the bridge pattern.
-  - **composite/**: Implements the composite pattern.
-  - **decorator/**: Implements the decorator pattern.
-  - **facade/**: Implements the facade pattern.
-  - **flyweight/**: Implements the flyweight pattern.
-  - **proxy/**: Implements the proxy pattern.
+## 📂 Project Structure
+src/
+├── Main.java                 # Entry point with demonstrations
+├── creational/               # Creational pattern implementations
+│    ├── singleton/           # Lazy and eager singleton
+│    ├── prototype/           # Cloning & performance comparison
+│    ├── factoryMethod/       # Product creation with factory method
+│    ├── abstractFactory/     # Document families with different styles
+│    │     ├── factories/     # Concrete factories per style
+│    │     ├── products/      # Product classes (Letter, Report, Resume)
+│    │     └── DocumentFactoryProvider.java
+│    └── builder/             # Constructing complex products
+│
+├── structural/               # Structural pattern implementations
+│    ├── adapter/
+│    ├── bridge/
+│    ├── composite/
+│    ├── decorator/
+│    ├── facade/
+│    ├── flyweight/
+│    └── proxy/
+│
+├── behavioral/               # Behavioral pattern implementations
+│    ├── strategy/
+│    ├── observer/
+│    ├── command/
+│    ├── chainOfResponsibility/
+│    ├── templateMethod/
+│    ├── state/
+│    ├── iterator/
+│    ├── mediator/
+│    ├── memento/
+│    ├── interpreter/
+│    └── visitor/
+│
+└─- **.gitignore** → Standard ignore file for Java and IDE artifacts.  
 
-- **src/behavioral/**  
-  Contains all behavioral pattern implementations (or stubs for future implementation):
+## 🧩 Pattern Descriptions
 
-  - **Strategy**: Defines a family of algorithms, encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
-  - **Observer**: Defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
-  - **Command**: Encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
-  - **Chain of Responsibility**: Lets more than one object handle a request by passing the request along a chain of handlers until one of them handles it.
-  - **Template Method**: Defines the skeleton of an algorithm in an operation, deferring some steps to subclasses.
-  - **State**: Allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
-  - **Iterator**: Provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
-  - **Mediator**: Defines an object that encapsulates how a set of objects interact, promoting loose coupling by keeping objects from referring to each other explicitly.
-  - **Memento**: Without violating encapsulation, captures and externalizes an object's internal state so that the object can be restored to this state later.
-  - **Interpreter**: Given a language, defines a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language.
-  - **Visitor**: Represents an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates.
+### Creational Patterns
+- **Singleton** → Ensures a class has only one instance and provides a global access point.  
+- **Prototype** → Creates new objects by cloning existing ones instead of instantiating from scratch.  
+- **Factory Method** → Defines an interface for creating an object but lets subclasses decide which class to instantiate.  
+- **Abstract Factory** → Provides an interface for creating families of related objects without specifying their concrete classes.  
+- **Builder** → Separates the construction of a complex object from its representation, allowing different configurations.  
 
-- **.gitignore**  
-  Standard gitignore file for Java projects and IDE files.
+### Structural Patterns
+- **Adapter** → Converts the interface of a class into another interface clients expect, enabling incompatible interfaces to work together.  
+- **Bridge** → Decouples abstraction from implementation, allowing the two to vary independently.  
+- **Composite** → Composes objects into tree structures to represent part-whole hierarchies; clients treat individual objects and compositions uniformly.  
+- **Decorator** → Dynamically adds responsibilities to objects without modifying their code.  
+- **Facade** → Provides a unified interface to a set of interfaces, making a subsystem easier to use.  
+- **Flyweight** → Reduces memory usage by sharing common state between multiple objects instead of storing it repeatedly.  
+- **Proxy** → Provides a surrogate or placeholder for another object to control access, add security, or manage resources.  
 
-## Usage
+### Behavioral Patterns
+- **Strategy** → Defines a family of algorithms, encapsulates each one, and makes them interchangeable at runtime.  
+- **Observer** → Establishes a one-to-many dependency so when one object changes state, all its dependents are notified.  
+- **Command** → Encapsulates a request as an object, allowing parameterization, queuing, logging, and undoable operations.  
+- **Chain of Responsibility** → Passes requests along a chain of handlers until one processes it, promoting loose coupling.  
+- **Template Method** → Defines the skeleton of an algorithm, deferring some steps to subclasses.  
+- **State** → Allows an object to change its behavior when its internal state changes.  
+- **Iterator** → Provides a way to sequentially access elements of a collection without exposing its internal structure.  
+- **Mediator** → Encapsulates interactions between objects, reducing direct dependencies and promoting loose coupling.  
+- **Memento** → Captures an object’s internal state without violating encapsulation so it can be restored later.  
+- **Interpreter** → Defines a grammar for a language and provides an interpreter to evaluate its sentences.  
+- **Visitor** → Separates operations from the object structure, allowing new operations to be added without modifying existing classes.  
 
-1. Clone the repository.
-2. Open in your favorite Java IDE.
-3. Run `Main.java` to see pattern demonstrations and output.
+## 🚀 Usage
 
-## Example Output
-
-The output will show the instantiation and usage of each pattern, with details printed to the console for each test method in `Main.java`.
-
-
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/<your-username>/<repo-name>.git
+   cd <repo-name>
