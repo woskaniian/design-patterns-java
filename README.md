@@ -16,43 +16,6 @@ This project serves as a reference and learning resource, with clean, well-struc
 
 ---
 
-## 📂 Project Structure
-src/
-├── Main.java                 # Entry point with demonstrations
-├── creational/               # Creational pattern implementations
-│    ├── singleton/           # Lazy and eager singleton
-│    ├── prototype/           # Cloning & performance comparison
-│    ├── factoryMethod/       # Product creation with factory method
-│    ├── abstractFactory/     # Document families with different styles
-│    │     ├── factories/     # Concrete factories per style
-│    │     ├── products/      # Product classes (Letter, Report, Resume)
-│    │     └── DocumentFactoryProvider.java
-│    └── builder/             # Constructing complex products
-│
-├── structural/               # Structural pattern implementations
-│    ├── adapter/
-│    ├── bridge/
-│    ├── composite/
-│    ├── decorator/
-│    ├── facade/
-│    ├── flyweight/
-│    └── proxy/
-│
-├── behavioral/               # Behavioral pattern implementations
-│    ├── strategy/
-│    ├── observer/
-│    ├── command/
-│    ├── chainOfResponsibility/
-│    ├── templateMethod/
-│    ├── state/
-│    ├── iterator/
-│    ├── mediator/
-│    ├── memento/
-│    ├── interpreter/
-│    └── visitor/
-│
-└─- **.gitignore** → Standard ignore file for Java and IDE artifacts.  
-
 ## 🧩 Pattern Descriptions
 
 ### Creational Patterns
@@ -84,9 +47,9 @@ src/
 - **Interpreter** → Defines a grammar for a language and provides an interpreter to evaluate its sentences.  
 - **Visitor** → Separates operations from the object structure, allowing new operations to be added without modifying existing classes.  
 
+---
+
 ## 🚀 Usage
 
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
-   cd <repo-name>
+1. Clone the repository
+2. Run Main.java to see the demonstrations for all implemented patterns.
